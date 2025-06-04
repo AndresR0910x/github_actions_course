@@ -4,7 +4,8 @@ name: "Deploy practice"
 # Se dispara el workflow cuando se haga el push 
 on:
   push:
-    branches: ("main")
+    branches: 
+      - main
 
 jobs:
   deploy-practice:
