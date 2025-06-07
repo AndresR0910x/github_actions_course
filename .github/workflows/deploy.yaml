@@ -9,11 +9,20 @@ jobs:
   first_job:
     runs-on: ubuntu-latest
 
+    env: 
+      NAME: AstroBot
 
     steps:
-     - name: Hola Mundo 
+     - name: Working dir 
       # Para ejecutar cualquier comando se puede usar la directiva run
-       run: echo "Hola mundo"
+       run: echo "Hola $NAME"
+       run: ls -la
+       
+     - name: Action
+       uses: actions/checkout@v4
+
+     - name: working dir after actions
+       run: ls -al
   
   second_job:
 
