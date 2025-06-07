@@ -13,9 +13,13 @@ jobs:
       NAME: AstroBot
 
     steps:
-     - name: Working dir 
+     - name: Working dir
+       # Permite hacer referencia a un step 
+       id: step_1
       # Para ejecutar cualquier comando se puede usar la directiva run
-       run: ls -la
+       run: echo "my_variable=Hola Mundo" >> $GITHUB_OUTPUT
+     - name: Obtener mensaje
+       run: echo "${{ steps.step_1.outputs.my_variable }}"
        
      - name: Action
        uses: actions/checkout@v4
