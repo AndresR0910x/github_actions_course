@@ -6,7 +6,7 @@ on: push
 
 
 jobs: 
-  first_jobs:
+  first_job:
     runs-on: ubuntu-latest
 
 
@@ -14,5 +14,13 @@ jobs:
      - name: Hola Mundo 
       # Para ejecutar cualquier comando se puede usar la directiva run
        run: echo "Hola mundo"
+  
+  second_job:
+    runs-on: ubuntu-latest
+
+    
+    steps:
+      -name: Hola Mundo 
+       run: echo "Hola mundo segundo"
 
 
