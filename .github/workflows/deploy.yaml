@@ -15,7 +15,6 @@ jobs:
     steps:
      - name: Working dir 
       # Para ejecutar cualquier comando se puede usar la directiva run
-       run: echo "Hola $NAME"
        run: ls -la
        
      - name: Action
