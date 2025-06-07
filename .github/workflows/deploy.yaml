@@ -16,6 +16,14 @@ jobs:
        run: echo "Hola mundo"
   
   second_job:
+
+    #Contextos 
+    # La abreviatura para utilizar contextos es la siguiente 
+    # ${{ context }}
+    # En este contexto se le esta diciento al job que solamente se ejecute 
+    # Si se la referencia de la rama es main en git hub 
+    if: ${{ github.ref == 'refs/heads/main'}}
+
     # Esta directiva indica que el segundo job necesita del primer job
     # Acepta listas tambien
     needs: first_job
