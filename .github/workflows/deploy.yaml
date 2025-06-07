@@ -16,6 +16,9 @@ jobs:
        run: echo "Hola mundo"
   
   second_job:
+    # Esta directiva indica que el segundo job necesita del primer job
+    # Acepta listas tambien
+    needs: first_job
     runs-on: ubuntu-latest
 
     
