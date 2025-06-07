@@ -1,19 +1,18 @@
-name: "Deploy practice"
 
-#Trigger
-# Se dispara el workflow cuando se haga el push 
-on:
-  push:
-    branches: ["main"]
+#Nombre de la directiva
+name: Deploy to server
 
-jobs:
-  deploy-practice:
+on: push
+
+
+jobs: 
+  first_jobs:
     runs-on: ubuntu-latest
+
+
     steps:
-      - uses: actions/checkout@v4
-      - run: echo "Hacemos pull del codigo"
-      - run: echo "Correr migraciones"
-      - run: echo "Generar binario"
-      - run: echo "Publicar version"
+     - name: Hola Mundo 
+      # Para ejecutar cualquier comando se puede usar la directiva run
+       run: echo "Hola mundo"
 
 
