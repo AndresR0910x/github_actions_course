@@ -14,41 +14,14 @@ jobs:
 
 
     steps:
-     - name: Working dir
-       # Permite hacer referencia a un step 
-       id: step_1
-      # Para ejecutar cualquier comando se puede usar la directiva run
-       run: echo "my_variable=Hola soy Andres" >> $GITHUB_OUTPUT
-
-
-     - name: Obtener mensaje
-       run: echo "${{ steps.step_1.outputs.my_variable }}"
+     - name: Genera archivo
        
-     - name: Action
-       uses: actions/checkout@v4
+       run: |
+        echo "Archivo prueba, hola" >> test.log
 
-     - name: working dir after actions
-       run: ls -al
-  
-  second_job:
-
-    #Contextos 
-    # La abreviatura para utilizar contextos es la siguiente 
-    # ${{ context }}
-    # En este contexto se le esta diciento al job que solamente se ejecute 
-    # Si se la referencia de la rama es main en git hub 
-    #if: ${{ github.ref == 'refs/heads/main'}}
-
-    # Esta directiva indica que el segundo job necesita del primer job
-    # Acepta listas tambien
-    needs: first_job
-    runs-on: ubuntu-latest
-
-    env: 
-      SALIDA: ${{ needs.first_job.outputs.salida }}
-    
-    steps:
-      - name: Hola Mundo 
-        run: echo "$SALIDA"
-
-
+     - name: Subir aretfacto 
+       uses: actions/upload-artifact@v4
+       with: 
+        name: archivo-test
+        path: test.log
+        
