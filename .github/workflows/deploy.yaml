@@ -18,7 +18,7 @@ jobs:
        # Permite hacer referencia a un step 
        id: step_1
       # Para ejecutar cualquier comando se puede usar la directiva run
-       run: echo "my_variable=Hola Mundo" >> $GITHUB_OUTPUT
+       run: echo "my_variable=Hola soy Andres" >> $GITHUB_OUTPUT
 
 
      - name: Obtener mensaje
