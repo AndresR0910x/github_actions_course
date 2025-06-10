@@ -9,8 +9,9 @@ jobs:
   first_job:
     runs-on: ubuntu-latest
 
-    env: 
-      NAME: AstroBot
+    outputs:
+      salida: ${{ steps.step_1.outputs.my_variable }}
+
 
     steps:
      - name: Working dir
@@ -18,6 +19,8 @@ jobs:
        id: step_1
       # Para ejecutar cualquier comando se puede usar la directiva run
        run: echo "my_variable=Hola Mundo" >> $GITHUB_OUTPUT
+
+
      - name: Obtener mensaje
        run: echo "${{ steps.step_1.outputs.my_variable }}"
        
@@ -34,16 +37,18 @@ jobs:
     # ${{ context }}
     # En este contexto se le esta diciento al job que solamente se ejecute 
     # Si se la referencia de la rama es main en git hub 
-    if: ${{ github.ref == 'refs/heads/main'}}
+    #if: ${{ github.ref == 'refs/heads/main'}}
 
     # Esta directiva indica que el segundo job necesita del primer job
     # Acepta listas tambien
     needs: first_job
     runs-on: ubuntu-latest
 
+    env: 
+      SALIDA: ${{ needs.first_job.outputs.salida }}
     
     steps:
       - name: Hola Mundo 
-        run: echo "Hola mundo segundo"
+        run: echo "$SALIDA"
 
 
