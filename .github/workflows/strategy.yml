@@ -1,0 +1,20 @@
+
+#Nombre de la directiva
+name: Deploy to server
+
+on: push
+
+
+jobs: 
+  first_job:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix: 
+        message: ["Hola", "Codigo Facilita", "Bootcamp Git hub Action"]
+
+    steps:
+      - name: Print mensaje
+        run: echo "${{ matrix.message }}"
+
+      
